@@ -41,5 +41,24 @@ namespace LINQ
                 Console.WriteLine("{0,-60} {1,15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
             }
         }
+
+        //CONDICION WHERE
+        public IEnumerable<Book> LibrosDespues2000(){
+           //Metodo con Extension
+           //return LibrosCollection.Where(p=> p.PublishedDate.Year > 2000);
+
+           //Metodo con Query Expression
+           return from i in LibrosCollection where i.PublishedDate.Year>2000 select i; 
+        }
+
+        //RETO CONDICION WHERE
+        //Retornar los libros que tengan más de 250 páginas y el título contenga las palabras "in Action"
+        public IEnumerable<Book> RetoWhere(){
+            //Metodo con Extensiones
+            //return LibrosCollection.Where(p=>p.PageCount>250 && p.Title.Contains("in Action"));
+
+            //Query Expression
+            return from i in LibrosCollection where i.PageCount>250 && i.Title.Contains("in Action") select i;
+        }
     }
 }
