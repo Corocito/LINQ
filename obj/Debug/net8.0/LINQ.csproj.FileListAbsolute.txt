@@ -12,3 +12,4 @@ D:\curso.Net\LINQ\obj\Debug\net8.0\refint\LINQ.dll
 D:\curso.Net\LINQ\obj\Debug\net8.0\LINQ.pdb
 D:\curso.Net\LINQ\obj\Debug\net8.0\LINQ.genruntimeconfig.cache
 D:\curso.Net\LINQ\obj\Debug\net8.0\ref\LINQ.dll
+D:\curso.Net\LINQ\obj\Debug\net8.0\LINQ.sourcelink.json
