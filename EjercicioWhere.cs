@@ -27,6 +27,14 @@ class EjercicioWhere {
     foreach(Animal a in resultado){
         Console.WriteLine(a.Nombre);
     }
+
+    //Retorna los eleentos de la colección animal ordenados por nombre
+    //SOLUCION DEL EJERCICIO DE ORDERBY
+    var ListaAnimalesOrder = (from p in animales orderby p.Nombre select p);
+
+    foreach(Animal a in ListaAnimalesOrder){
+      Console.WriteLine(a.Nombre);
+    }
   }
     
     
