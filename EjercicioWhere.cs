@@ -19,7 +19,8 @@ class EjercicioWhere {
 
     // Escribe tu código aquí
     // filtra todos los animales que sean de color verde que su nombre inicie con una vocal
-    var ListaAnimales = (from p in animales where p.Color=="Verde" select p);
+    var vocales = new string []{"A","E","I","O","U"};
+    var ListaAnimales = (from p in animales where p.Color=="Verde" && vocales.Any(vocal=>p.Nombre.StartsWith(vocal)) select p);
 
     List<Animal> resultado = ListaAnimales.ToList();
     
