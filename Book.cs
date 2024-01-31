@@ -11,7 +11,10 @@ namespace LINQ
 
         //Se crean cada una de las variables que se van a utilizar para el manejo y la obtencion de la información de los libros
         //El signo de interrogación al final del string se refiere a inicializar la variable en null
-        public string? Tittle {get;set;}
+
+
+        //HAY QUE TENER CUIDADO CON EL NOMBRAMIENTO DE LAS VARIABLES, DEBEN DE SER NOMBRADAS IGUAL A COMO ESTAN EN EL JSON
+        public string? Title {get;set;}
         public int PageCount {get;set;}
         public DateTime PublishedDate {get;set;}
         public string? URL {get;set;}
