@@ -27,7 +27,7 @@ namespace LINQ
                 {PropertyNameCaseInsensitive=true});
             }
         }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Se aplica un nuevo metodo el cual se encargará de devolver toda la información obtenida
         public IEnumerable<Book> TodalaColeccion(){
             return LibrosCollection;
@@ -41,7 +41,7 @@ namespace LINQ
                 Console.WriteLine("{0,-60} {1,15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
             }
         }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //CONDICION WHERE
         public IEnumerable<Book> LibrosDespues2000(){
            //Metodo con Extension
@@ -59,6 +59,78 @@ namespace LINQ
 
             //Query Expression
             return from i in LibrosCollection where i.PageCount>250 && i.Title.Contains("in Action") select i;
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //CONDICIÓN ALL
+        //Las condiciones ANY y ALL son BOOLEANAS
+        public bool ValorEnStatus(){
+            //Forma de hacerlo con WHERE
+            //return from i in LibrosCollection where i.Status!=null select i;
+
+            //Forma con ALL
+            return LibrosCollection.All(p=>p.Status != string.Empty);
+        }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //CONDICIÓN ANY
+        public bool AlgunoPublicado2005(){
+            return LibrosCollection.Any(p=>p.PublishedDate.Year==2005);
+        }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //CONDICIÓN CONTAINS
+        public IEnumerable<Book> ContienePython(){
+            return LibrosCollection.Where(p=>p.Categories.Contains("Python"));
+        }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //CONDICION ORDERBY
+        public IEnumerable<Book> OrdenarJavaTitulo(){
+            return LibrosCollection.Where(p=>p.Categories.Contains("Java")).OrderBy(p=>p.Title);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //CONDICIÓN ORDERBYDESCENDING
+        public IEnumerable<Book> OrderDescending(){
+            return LibrosCollection.Where(p=>p.PageCount>450).OrderByDescending(p=>p.PageCount);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR TAKE
+        public IEnumerable<Book> OperadorTake(){
+            return LibrosCollection.Where(p=>p.Categories.Contains("Java")).OrderByDescending(p=>p.PublishedDate).Take(3);
+        }
+        
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR SKIP
+        public IEnumerable<Book> operadorSkip(){
+            return LibrosCollection.Where(p=>p.PageCount>400).Skip(2).Take(2);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR SELECT
+        //Utilizanco el Operador Select selecciona el titulo y el numero de paginas de los primeros 3 libros de la colección
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //El metodo SELECT crea datos dinamicos, son datos que no son especificados por lo que se vuelve dificil de manejar, es mejor crear el objeto deseado, en este
+        //caso, un objeto
+        public IEnumerable<Book> operadorSelect(){
+            return LibrosCollection.Take(3)
+            .Select(p=> new Book
+            {Title = p.Title, 
+            PageCount = p.PageCount});
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR COUNT 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Utilizando el operador Count, retornar el número de libros qe tengan entre 200 y 500 páginas
+
+        //El operador count es un contador que aumenta con cada variable que cumple con la condicion, por lo que el tipo de valor es INT 
+        public int operadorCount(){
+            return LibrosCollection.Count(p=>p.PageCount<=500 && p.PageCount>=200);
+
+            //Tambien puede ser otra forma de hacerlo, aplicando el metodo Where
+            //return LibrosCollection.Where(p=>p.PageCount<=500 && p.PageCount>=200).Count();
         }
     }
 }
