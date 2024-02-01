@@ -41,6 +41,11 @@ namespace LINQ
                 Console.WriteLine("{0,-60} {1,15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
             }
         }
+
+
+
+
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //CONDICION WHERE
         public IEnumerable<Book> LibrosDespues2000(){
@@ -132,5 +137,85 @@ namespace LINQ
             //Tambien puede ser otra forma de hacerlo, aplicando el metodo Where
             //return LibrosCollection.Where(p=>p.PageCount<=500 && p.PageCount>=200).Count();
         }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR LONGCOUNT
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //El operador LongCount funciona igual al operador Count, solo que devuelve un parametro de tipo Long
+
+        public long operadorLongCount(){
+            return LibrosCollection.LongCount(p=>p.PageCount<=500 && p.PageCount>=200);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR MIN
+        //Retornar la menor fecha de publicación de la lista de libros
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public DateTime operadorMin(){
+            return LibrosCollection.Min(p=>p.PublishedDate);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR MAX
+        //Retornar la cantidad de páginas del libro con mayor número de páginas en la colección
+
+        public int operadorMax(){
+            return LibrosCollection.Max(p=>p.PageCount);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR MINBY
+        //Retornar el libro que tenga la menor cantidad de páginas mayor a 0
+
+        public Book operadorMinBy(){
+            return LibrosCollection.Where(p=>p.PageCount>0).MinBy(p=>p.PageCount);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR MAXBY
+        //Retorna el libro con la fecha de publicación mas reciente
+        //Se debe de definir la variable como un objeto, en este caso el objeto Book ya que es de este tipo el cual estamos trabajando
+        public Book operadorMaxBy(){
+            return LibrosCollection.MaxBy(p=>p.PublishedDate);
+        }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR SUM
+        //Retornar la suma de la cantidad de paginas de todos los libros que tengan entre 0 y 500
+
+        public int operadorSum(){
+            return LibrosCollection.Where(p=>p.PageCount<=500 && p.PageCount>=0).Sum(p=>p.PageCount);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR AGGREGATE
+        //Retornar el titulo de los libros que tienen fecha de publicacion postetior a 2015
+
+        public string operadorAggregate(){
+            return LibrosCollection.Where(p=>p.PublishedDate.Year>2015).Aggregate("",(p1, p2)=>{
+                if(p1 != string.Empty)
+                    p1 += " - " + p2.Title;
+                
+                else
+                    p1+=p2.Title;
+                
+                return p1;
+            });
+        }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR AVERAGE
+        //Retorna un promedio de alguna propiedad numérica
+        //Retorna el promedio de caracteres que tienen los títulos de la colección
+        public double opAverage(){
+            
+            return LibrosCollection.Average(p=>p.Title.Length);
+        }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR GROUP BY
+        //Retornar todos los libros que fueron publicados a partir del 2000, agrupados por año
+        public IEnumerable<IGrouping<int, Book>>operadorGroupBy(){
+
+            return LibrosCollection.Where(p=>p.PublishedDate.Year>=2000).GroupBy(p=>p.PublishedDate.Year);
+        }
+
     }
 }
