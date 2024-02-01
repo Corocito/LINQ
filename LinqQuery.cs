@@ -216,6 +216,22 @@ namespace LINQ
 
             return LibrosCollection.Where(p=>p.PublishedDate.Year>=2000).GroupBy(p=>p.PublishedDate.Year);
         }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR LOOKUP
+        //Este operador funciona como un diccionario para realizar busquedas y agrupar los datos por una propiedad
+        public ILookup<char, Book> DiccionarioPorLetra(){
+            return LibrosCollection.ToLookup(p=>p.Title[0]);
+        }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //OPERADOR JOIN
+        //Este operador funciona para unir la información para mostarla 
+        public IEnumerable<Book> filtrarLibros(){
+            var LibrosDespues2005 = LibrosCollection.Where(p=>p.PublishedDate.Year>2005);
+            var LibrosMas500Pag = LibrosCollection.Where(p=>p.PageCount>500);
+
+            return LibrosDespues2005.Join(LibrosMas500Pag, p=>p.Title, x=>x.Title, (p,x) => p);
+        }
 
     }
 }

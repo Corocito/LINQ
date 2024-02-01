@@ -112,7 +112,14 @@ void ImprimirGrupo(IEnumerable<IGrouping<int,Book>> listaLibros){
     }
 }
 
-var opGroupBy = query.operadorGroupBy();
-ImprimirGrupo(opGroupBy);
+// var opGroupBy = query.operadorGroupBy();
+// ImprimirGrupo(opGroupBy);
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//MOSTRAR OPERADOR JOIN
+
+var filtrarJoin= query.filtrarLibros();
+query.ShowValues(filtrarJoin);
+
 
 
