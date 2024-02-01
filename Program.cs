@@ -21,83 +21,88 @@ LinqQuery query = new LinqQuery();
 // Console.WriteLine($"Todos los libros poseen estatus?: {libros}");
 // //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // //MOSTRAR CONDICION ANY
-// var algunoPublicado2005 = query.AlgunoPublicado2005();
-// Console.WriteLine($"Algun libro fue publicado en 2005?: {algunoPublicado2005}");
+var algunoPublicado2005 = query.AlgunoPublicado2005();
+Console.WriteLine($"Algun libro fue publicado en 2005?: {algunoPublicado2005}");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR CONDICION WHERE
-// var mostrarResultados = query.LibrosDespues2000();
-// query.ShowValues(mostrarResultados);
+var mostrarResultados = query.LibrosDespues2000();
+query.ShowValues(mostrarResultados);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR CONDICIÓN CONTAINS
-// var MostrarContains = query.ContienePython();
-// query.ShowValues(MostrarContains);
+var MostrarContains = query.ContienePython();
+query.ShowValues(MostrarContains);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR CONDICION ORDERBY
-// var MostrarResultadoOrdenarJava = query.OrdenarJavaTitulo();
-// query.ShowValues(MostrarResultadoOrdenarJava);
+var MostrarResultadoOrdenarJava = query.OrdenarJavaTitulo();
+query.ShowValues(MostrarResultadoOrdenarJava);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR CONDICION ORDERBYDESCENDING
-// var MostrarPorPaginasDesc = query.OrderDescending();
-// query.ShowValues(MostrarPorPaginasDesc);
+var MostrarPorPaginasDesc = query.OrderDescending();
+query.ShowValues(MostrarPorPaginasDesc);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR TAKE
-// var mostrarTake = query.OperadorTake();
-// query.ShowValues(mostrarTake);
+var mostrarTake = query.OperadorTake();
+query.ShowValues(mostrarTake);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR SKIP
-// var mostrarSkip = query.operadorSkip();
-// query.ShowValues(mostrarSkip);
+var mostrarSkip = query.operadorSkip();
+query.ShowValues(mostrarSkip);
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR SELECT
-// var mostrarSelect = query.operadorSelect();
-// query.ShowValues(mostrarSelect);
+var mostrarSelect = query.operadorSelect();
+query.ShowValues(mostrarSelect);
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR COUNT
-// int cantidadLibrosCount = query.operadorCount();
-// Console.WriteLine($"Cantidad de libros que tienen entre 200 y 500 páginas es de {cantidadLibrosCount} libros");
+int cantidadLibrosCount = query.operadorCount();
+Console.WriteLine($"Cantidad de libros que tienen entre 200 y 500 páginas es de {cantidadLibrosCount} libros");
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR LONGCOUNT
-// long cantidadLibrosLongCount = query.operadorLongCount();
-// Console.WriteLine($"La cantidad de libros que tienen entre 200 y 500 páginas es de {cantidadLibrosLongCount} libros");
+long cantidadLibrosLongCount = query.operadorLongCount();
+Console.WriteLine($"La cantidad de libros que tienen entre 200 y 500 páginas es de {cantidadLibrosLongCount} libros");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR MIN
-// DateTime fechaMinimaPublicacion = query.operadorMin();
-// Console.WriteLine($"La fecha mínima de publicación es de: {fechaMinimaPublicacion.ToShortDateString()}");   
+DateTime fechaMinimaPublicacion = query.operadorMin();
+Console.WriteLine($"La fecha mínima de publicación es de: {fechaMinimaPublicacion.ToShortDateString()}");   
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR MAX
-// int MayorCantidadPaginas = query.operadorMax();
-// Console.WriteLine($"La mayor cantidad de páginas es de: {MayorCantidadPaginas}");
+int MayorCantidadPaginas = query.operadorMax();
+Console.WriteLine($"La mayor cantidad de páginas es de: {MayorCantidadPaginas}");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR MINBY
-// var listaLibroCondicionMinBy = query.operadorMinBy();
-// Console.WriteLine($"El libro con menor cantidad de páginas mayor a 0 es: {listaLibroCondicionMinBy.Title} con: {listaLibroCondicionMinBy.PageCount} páginas");
+var listaLibroCondicionMinBy = query.operadorMinBy();
+Console.WriteLine($"El libro con menor cantidad de páginas mayor a 0 es: {listaLibroCondicionMinBy.Title} con: {listaLibroCondicionMinBy.PageCount} páginas");
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR MAXBY
-// var listaMaxBy = query.operadorMaxBy();
-// Console.WriteLine($"El libro con fecha de publicación mas reciente es: {listaMaxBy.Title} con fecha de publicación de {listaMaxBy.PublishedDate.ToShortDateString()}");
+var listaMaxBy = query.operadorMaxBy();
+Console.WriteLine($"El libro con fecha de publicación mas reciente es: {listaMaxBy.Title} con fecha de publicación de {listaMaxBy.PublishedDate.ToShortDateString()}");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR SUM
-// var sumaPaginas = query.operadorSum();
-// Console.WriteLine($"La suma de las páginas de los libros entre 0 y 500 páginas es de: {sumaPaginas}");
+var sumaPaginas = query.operadorSum();
+Console.WriteLine($"La suma de las páginas de los libros entre 0 y 500 páginas es de: {sumaPaginas}");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR AGGREGATE
-// var opAggregate = query.operadorAggregate();
-// Console.WriteLine(opAggregate);
+var opAggregate = query.operadorAggregate();
+Console.WriteLine(opAggregate);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR AVERAGE
-// var opAverage = query.opAverage();
-// Console.WriteLine($"El promedio de caracteres en los titulos de los libros es de: {opAverage}");
+var opAverage = query.opAverage();
+Console.WriteLine($"El promedio de caracteres en los titulos de los libros es de: {opAverage}");
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR GROUP BY
 
@@ -112,14 +117,16 @@ void ImprimirGrupo(IEnumerable<IGrouping<int,Book>> listaLibros){
     }
 }
 
-// var opGroupBy = query.operadorGroupBy();
-// ImprimirGrupo(opGroupBy);
+var opGroupBy = query.operadorGroupBy();
+ImprimirGrupo(opGroupBy);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MOSTRAR OPERADOR JOIN
 
 var filtrarJoin= query.filtrarLibros();
 query.ShowValues(filtrarJoin);
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
